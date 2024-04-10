@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple To-Do List App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        #todo-list {
+            margin-top: 20px;
+            list-style-type: none;
+            padding: 0;
+        }
+        #todo-list li {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Simple To-Do List App</h1>
+    <input type="text" id="task" placeholder="Enter task...">
+    <button onclick="addTask()">Add Task</button>
+    <ul id="todo-list"></ul>
+
+    <script>
+        // Function to add a new task
+        function addTask() {
+            const taskInput = document.getElementById('task');
+            const taskText = taskInput.value.trim();
+            
+            if (taskText !== '') {
+                const listItem = document.createElement('li');
+                listItem.textContent = taskText;
+                document.getElementById('todo-list').appendChild(listItem);
+                taskInput.value = '';
+            } else {
+                alert('Please enter a task.');
+            }
+        }
+
+        // Function to mark a task as completed
+        document.getElementById('todo-list').addEventListener('click', function(event) {
+            if (event.target.tagName === 'LI') {
+                event.target.classList.toggle('completed');
+            }
+        });
+    </script>
+</body>
+</html>
